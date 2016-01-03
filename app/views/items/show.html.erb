@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <td><%= @item.title %></td>
+    <td><%= @item.price %></td>
+  </tr>
+  <tr>
+    <td><%= image_tag(@item.photo) %></td>
+    <td><%= @item.description %></td>
+  </tr>
+  <tr>
+    <td><%= link_to "#{@item.link}", @item.link %></td>
+  </tr>
+</table>
+
+<br><%= link_to 'Back', items_path %>
+<br><%= link_to "Remove Item", @item, :method => :delete %>
+

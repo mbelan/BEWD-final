@@ -1,0 +1,27 @@
+<%= flash[:error] %>
+<%=  form_for @item do |f| %>
+  <fieldset>
+    <div>
+      <%=  f.label :title %>
+      <%=  f.text_field :title %>
+    </div>
+    <div>
+      <%=  f.label :price %>
+      <%=  f.text_area :price %>
+    </div>
+    <div>
+      <%=  f.label :description %>
+      <%=  f.text_field :description %>
+    </div>
+    <div>
+      <%=  f.label :photo %>
+      <%=  f.text_field :photo %>
+    </div>
+    <div>
+      <%=  f.label :link %>
+      <%=  f.text_field :link %>
+    </div>
+  </fieldset>
+  <%=  f.submit "Submit" %>
+  <%= link_to 'Back', items_path %>
+<% end %>

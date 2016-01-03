@@ -1,0 +1,24 @@
+<h1>Welcome to MakeMyDay!</h1>
+<h3>Here is your current wish list:</h3>
+
+<br>
+
+<table>
+  <tr>
+    <th>Items</th>
+  </tr>
+
+<% @items.each do |item| %>
+  <tr>
+    <td><%= link_to "#{item.title}", item_path(item) %></td>
+    <td><%= item.price %></td>
+  </tr>
+  <% end %>
+</table>
+
+<br>
+<%= link_to "Add Item", new_item_path %>
+<br>
+
+
+
