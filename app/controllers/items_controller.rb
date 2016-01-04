@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
 	end
 
 	def edit
-
+		@item = Item.find(params[:id])
 	end
 
 	def create
@@ -26,7 +26,13 @@ class ItemsController < ApplicationController
 	end
 
 	def update
-
+		@item = Item.find(params[:id])
+    	if @item.update(create_params)
+    		redirect_to item_path(@item)
+    	else
+    		flash.now[:error] = @item.errors.messages.first.join(" ")
+    		render 'edit'
+    	end
 	end
 
 	def destroy

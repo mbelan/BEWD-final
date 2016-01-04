@@ -22,6 +22,6 @@
       <%=  f.text_field :link %>
     </div>
   </fieldset>
-  <%=  f.submit "Submit" %>
+  <%=  f.submit @item.new_record? ? "Create" : "Update" %>
   <%= link_to 'Back', items_path %>
 <% end %>

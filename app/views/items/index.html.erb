@@ -2,12 +2,10 @@
 <h3>Here is your current wish list:</h3>
 
 <br>
+<h2>Items</h2>
+<br>
 
 <table>
-  <tr>
-    <th>Items</th>
-  </tr>
-
 <% @items.each do |item| %>
   <tr>
     <td><%= link_to "#{item.title}", item_path(item) %></td>

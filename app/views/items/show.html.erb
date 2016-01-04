@@ -1,6 +1,6 @@
 <table>
   <tr>
-    <td><%= @item.title %></td>
+    <td><h1><%= @item.title %></h1></td>
     <td><%= @item.price %></td>
   </tr>
   <tr>
@@ -13,5 +13,6 @@
 </table>
 
 <br><%= link_to 'Back', items_path %>
+<br><%= link_to "Edit item", edit_item_path(@item) %>
 <br><%= link_to "Remove Item", @item, :method => :delete %>
 
