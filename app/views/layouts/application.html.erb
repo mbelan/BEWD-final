@@ -7,6 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<h1>Welcome to Make My Day!</h1>
+
+<% if user_signed_in? %>
+	<%= "Hello, #{current_user.first_name}" %>
+	<br>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+  <%= link_to "Edit User Profile", edit_user_registration_path %>
+<% else %>
+  <%= link_to "Sign up", new_user_registration_path %> | <%= link_to "Login", new_user_session_path %>
+<% end %>
 
 <%= yield %>
 
