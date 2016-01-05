@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
+
 	def index
-		@items = Item.all
+		@items = current_user.items
 	end
 
 	def show
@@ -16,7 +17,7 @@ class ItemsController < ApplicationController
 	end
 
 	def create
-		@item = Item.new(create_params)
+		@item = current_user.items.build create_params
 		
 		if @item.save
 			redirect_to item_path(@item)
