@@ -17,6 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'bootstrap-sass'
 # Use paperclip to manage photos
 gem 'paperclip', '~> 4.3'
+gem 'aws-sdk'
 # add devise to handle user auth
 gem 'devise'
 # Use jquery as the JavaScript library
