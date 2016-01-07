@@ -2,6 +2,10 @@ class ItemsController < ApplicationController
 
 	def index
 		@items = current_user.items
+		if params[:search]
+			@users = User.search(params[:search])
+		end
+
 	end
 
 	def show
