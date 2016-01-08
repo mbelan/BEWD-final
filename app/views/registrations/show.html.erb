@@ -1,0 +1,13 @@
+<table>
+	<tr>
+		<td>
+<h3><%= "#{@user.user_name}'s wish list:" %></h3>
+
+<table>
+<% @items.each do |item| %>
+  <tr>
+    <td><%= link_to "#{item.title}", item_path(item) %></td>
+    <td><%= item.price %></td>
+  </tr>
+  <% end %>
+</table>
