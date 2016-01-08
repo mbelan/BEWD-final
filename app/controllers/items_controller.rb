@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
 		if params[:search]
 			@users = User.search(params[:search])
 		end
-
 	end
 
 	def show

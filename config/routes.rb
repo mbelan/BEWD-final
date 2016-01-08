@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'items#index'
   delete 'items/delete/:id', to: 'items#destroy', as: :delete_item
+  #post 'relationships', to: 'relationships#create', as: :create_relationship
   resources :items
+  resources :messages
+  resources :relationships, only: [:create, :destroy]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

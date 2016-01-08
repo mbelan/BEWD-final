@@ -1,3 +1,6 @@
+<table>
+	<tr>
+		<td>
 <h3>Here is your current wish list:</h3>
 
 <table>
@@ -11,7 +14,19 @@
 
 <br>
 <%= link_to "Add Item", new_item_path %>
-<br>
+		</td>
+		<td>
+		<h3>Friends you are following:</h3>
+<table>
+<% current_user.followed_users.each do |user| %>
+  <tr>
+    <td><%= "#{user.first_name}" %><sp></td>
+    <td><%= "#{user.last_name}" %></td>
+  </tr>
+  <% end %>
+</table>
+
+
 
 
 
