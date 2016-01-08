@@ -1,0 +1,10 @@
+<ul>
+<% @users.each do |user| %>
+	<tr><b>Email:</b> <%= user.email %> 
+		<b>First Name:</b> <%= user.first_name %>
+		<b>Last name:</b> <%= user.last_name %> 
+		<b>Handle:</b> <%= user.user_name %>
+		<%= link_to "Add", relationships_path(:followed_id => "#{user.id}"), :method => 'post'%>
+	</tr>
+<% end %>
+</ul>
