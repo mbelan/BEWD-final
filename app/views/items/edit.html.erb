@@ -1,5 +1,9 @@
+<% if @item.user == current_user %>
 <h1>Edit Item</h1>
+	<%= render 'form' %>
+	<% else %>
+	<h2>Claim Item</h2>
+		<%= render 'claim' %>
+	<% end %>
 
-<%= render 'form' %>
 
-<%= link_to "Cancel", item_path(@item) %>

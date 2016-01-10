@@ -45,7 +45,9 @@ class ItemsController < ApplicationController
     	redirect_to items_path
 	end
 
+	private
+
 	def create_params
-		params.require(:item).permit(:title, :price, :photo, :description, :link)
+		params.require(:item).permit(:title, :price, :photo, :description, :link, :claimed => 'false')
 	end
 end

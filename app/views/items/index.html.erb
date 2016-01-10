@@ -1,28 +1,32 @@
 <table>
 	<tr>
+		<td><h3>Your current wish list:</h3></td>
+		<td><h3>Friends you are following:</h3></td>
+	</tr>
+	<tr>
 		<td>
-<h3>Here is your current wish list:</h3>
+			<table>
+				<% @items.each do |item| %>
+  				<tr>
+    				<td><%= link_to "#{item.title}", item_path(item) %></td>
+    				<td><%= item.price %></td>
+  				</tr>
+  				<% end %>
+			</table>
 
-<table>
-<% @items.each do |item| %>
-  <tr>
-    <td><%= link_to "#{item.title}", item_path(item) %></td>
-    <td><%= item.price %></td>
-  </tr>
-  <% end %>
-</table>
-
-<br>
-<%= link_to "Add Item", new_item_path %>
+			<br>
+			<%= link_to "Add Item", new_item_path %>
 		</td>
 		<td>
-		<h3>Friends you are following:</h3>
-<table>
-<% current_user.followed_users.each do |user| %>
-  <tr>
-    <td><%= link_to "#{user.user_name}", user_path(user) %><sp></td>
-  </tr>
-  <% end %>
+			<table>
+			<% current_user.followed_users.each do |user| %>
+  				<tr>
+    				<td><%= link_to "#{user.user_name}", user_path(user) %><sp></td>
+  				</tr>
+  			<% end %>
+  			</table>
+  		</td>
+  	</tr	
 </table>
 
 

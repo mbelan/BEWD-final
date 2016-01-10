@@ -1,27 +1,28 @@
 <%= flash[:error] %>
-<%=  form_for @item do |f| %>
-  <fieldset>
-    <div>
-      <%=  f.label :title %>
-      <%=  f.text_field :title %>
-    </div>
-    <div>
-      <%=  f.label :price %>
-      <%=  f.text_area :price %>
-    </div>
-    <div>
-      <%=  f.label :description %>
-      <%=  f.text_field :description %>
-    </div>
-    <div>
-      <%=  f.label :photo %>
-      <%=  f.text_field :photo %>
-    </div>
-    <div>
-      <%=  f.label :link %>
-      <%=  f.text_field :link %>
-    </div>
-  </fieldset>
-  <%=  f.submit @item.new_record? ? "Create" : "Update" %>
-  <%= link_to 'Back to List', items_path %>
+  <%=  form_for @item do |f| %>
+    <fieldset>
+      <div>
+        <%=  f.label :title %>
+        <%=  f.text_field :title %>
+      </div>
+      <div>
+        <%=  f.label :price %>
+        <%=  f.text_field :price %>
+      </div>
+      <div>
+        <%=  f.label :description %>
+        <%=  f.text_field :description %>
+      </div>
+      <div>
+        <%=  f.label :photo %>
+        <%=  f.text_field :photo %>
+      </div>
+      <div>
+        <%=  f.label :link %>
+        <%=  f.text_field :link %>
+      </div>
+    </fieldset>
+<%= f.submit @item.new_record? ? "Create" : "Update" %>
+<%= link_to "Cancel", items_path %>
+<%= link_to 'Back to List', items_path %>
 <% end %>

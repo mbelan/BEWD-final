@@ -10,8 +10,14 @@
     <td><%= link_to "#{@item.link}", @item.link %></td>
   </tr>
 </table>
-
-<br><%= link_to 'Back to List', items_path %>
-<br><%= link_to "Edit item", edit_item_path(@item) %>
-<br><%= link_to "Remove Item", @item, :method => :delete %>
+<br>
+  <%= link_to 'Home', items_path %><br>
+<% if @item.user_id == current_user.id %>
+  <%= link_to "Edit item", edit_item_path(@item) %><br>
+  <%= link_to "Remove Item", @item, :method => :delete %><br>
+<% end %>
+<% if @item.user_id != current_user.id %>
+  <%= link_to "Friend's List", user_path(@item.user_id) %><br>
+  <%= link_to "Claim Item", edit_item_path(@item) %><br>
+<% end %>
 
