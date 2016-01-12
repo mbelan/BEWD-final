@@ -12,12 +12,24 @@
 </table>
 <br>
   <%= link_to 'Home', items_path %><br>
-<% if @item.user_id == current_user.id %>
+<% if @item.user == current_user %>
   <%= link_to "Edit item", edit_item_path(@item) %><br>
   <%= link_to "Remove Item", @item, :method => :delete %><br>
-<% end %>
-<% if @item.user_id != current_user.id %>
+<% else %>
   <%= link_to "Friend's List", user_path(@item.user_id) %><br>
-  <%= link_to "Claim Item", edit_item_path(@item) %><br>
+  <% if @item.claimed %>
+    <%= render 'claim' %>
+    <% else %>
+    <%= form_for @item do |f| %>
+    <%= f.hidden_field(:claimed, value: true) %>
+    <%= f.hidden_field(:claimer_id, value: current_user.id) %>
+    <%= submit_tag "Claim Item" %><br>
+    <% end %>
+  <% end %>
 <% end %>
+
+<%= "#{@item.claimed}" %><br>
+<%= "#{@item.claimer_id}" %><br>
+
+
 

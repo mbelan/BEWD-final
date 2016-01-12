@@ -4,9 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
 	has_many :items
+  has_many :claims, foreign_key: "claimer_id", dependent: :destroy, :class_name => "Item"
+  has_many :claimed_items, :through => :claims, :source => :user, :class_name => "Item"
 	has_many :followed_relationships, foreign_key: "follower_id", dependent: :destroy, :class_name => "Relationship"
 
-  has_many :followed_users, :through => :followed_relationships, :source => :followed, :class_name => 'User'
+  has_many :followed_users, :through => :followed_relationships, :source => :followed, :class_name => "User"
 
   has_many :follower_relationships, foreign_key: "followed_id", dependent: :destroy, :class_name => "Relationship"
   has_many :followers, :through => :follower_relationships, :source => :follower, :class_name => "User"

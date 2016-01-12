@@ -31,7 +31,13 @@ class ItemsController < ApplicationController
 
 	def update
 		@item = Item.find(params[:id])
-    	if @item.update(create_params)
+		if @item.user == current_user
+			@item.update(create_params)
+		else
+			@item.update(claim_params)
+		end
+
+		if @item.save
     		redirect_to item_path(@item)
     	else
     		flash.now[:error] = @item.errors.messages.first.join(" ")
@@ -48,6 +54,10 @@ class ItemsController < ApplicationController
 	private
 
 	def create_params
-		params.require(:item).permit(:title, :price, :photo, :description, :link, :claimed => 'false')
+		params.require(:item).permit(:title, :price, :photo, :description, :link, :claimed_by, :claimed => 'false')
+	end
+
+	def claim_params
+		params.require(:item).permit(:claimed, :claimer_id)
 	end
 end

@@ -1,4 +1,9 @@
-<%= "Yes, I'll get this item for #{@item.user.user_name}!" %>
+<%= "Item already claimed for #{@item.user.user_name}." %> 
+<% if current_user.id == @item.claimer_id %>
+    <%= form_for @item do |f| %>
+    	<%= f.hidden_field(:item_id, value: "#{@item.id}") %>
+    	<%= f.hidden_field(:claimer_id, value: "#{current_user.id}") %>
+    	<%= submit_tag "UnClaim Item", claim_path %><br> 
+    <% end %>
+<% end %>
 
-<br>
-<%= link_to "Home", items_path %>

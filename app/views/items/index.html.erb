@@ -2,6 +2,7 @@
 	<tr>
 		<td><h3>Your current wish list:</h3></td>
 		<td><h3>Friends you are following:</h3></td>
+		<td><h3>Claimed items:</h3></td>
 	</tr>
 	<tr>
 		<td>
@@ -26,8 +27,22 @@
   			<% end %>
   			</table>
   		</td>
+  		<td>
+			<table>
+  			<td><% current_user.claims.each do |claim| %></td>
+  			<tr>
+  				<td><%= "#{claim.id}" %></td>
+  				<td><%= link_to "Delete", delete_claim_path(claim) %></td>
+  			</tr>
+  			<% end %>
+  			</table>
+  		</td>
   	</tr	
 </table>
+
+
+
+
 
 
 
